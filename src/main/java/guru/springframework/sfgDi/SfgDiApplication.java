@@ -1,9 +1,6 @@
 package guru.springframework.sfgDi;
 
-import guru.springframework.sfgDi.controller.ConstructorInjectedController;
-import guru.springframework.sfgDi.controller.MyController;
-import guru.springframework.sfgDi.controller.PropertyInjectedController;
-import guru.springframework.sfgDi.controller.SetterInjectedController;
+import guru.springframework.sfgDi.controller.*;
 import org.omg.PortableServer.ServantRetentionPolicy;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +13,11 @@ public class SfgDiApplication {
 
 	{
 		ApplicationContext context = SpringApplication.run(SfgDiApplication.class, args);
+
+
+		I18Controller i18Controller = (I18Controller)context.getBean("i18Controller");
+
+		System.out.println(i18Controller.sayHello());
 
 		MyController myController =(MyController)context.getBean("myController");
 
