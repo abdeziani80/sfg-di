@@ -5,7 +5,9 @@ import guru.springframework.sfgDi.controller.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan(basePackages = {"guru.springframework.sfgDi", "com.springframework.pets"})
 @SpringBootApplication
 public class SfgDiApplication {
 
@@ -44,6 +46,11 @@ public class SfgDiApplication {
 		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) context.getBean("constructorInjectedController");
 
 		System.out.println(constructorInjectedController.getGreeting());
+
+
+		PetController petController = context.getBean("petController", PetController.class);
+		System.out.println("--- The Best Pet is ---");
+		System.out.println(petController.whichPetIsTheBest());
 
 
 	}
